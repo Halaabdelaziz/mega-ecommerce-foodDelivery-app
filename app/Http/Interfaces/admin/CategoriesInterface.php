@@ -1,8 +1,8 @@
-<?php 
-namespace App\Http\Interfaces;
-use Illuminate\Http\Request;
+<?php
+namespace App\Http\Interfaces\admin;
+use App\Http\Repositories\CategoriesRepository;
 
-interface RestaurantInterface{
+interface CategoriesInterface{
     public function index();
     public function create();
     public function store($request);

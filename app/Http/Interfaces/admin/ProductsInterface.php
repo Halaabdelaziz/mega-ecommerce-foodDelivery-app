@@ -1,6 +1,6 @@
 <?php 
-namespace App\Http\Interfaces;
-use Illuminate\Http\Request;
+namespace App\Http\Interfaces\admin;
+
 
 interface ProductInterface{
     public function index();
