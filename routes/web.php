@@ -2,7 +2,11 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\admin\CategoryController;
+
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +20,13 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+
+    return view('layouts.master');
+});
+Route::get('/create',[CategoryController::class,'create']);
+Route::post('/create',[CategoryController::class,'store']);
+Route::get('/index',[CategoryController::class,'index'])->name('getCategories');
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -29,3 +40,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
