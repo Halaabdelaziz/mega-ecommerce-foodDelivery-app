@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\RestaruntController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,18 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::group(['middleware' => ['auth:sanctum']],function(){
 Route::get('/logout',[AuthController::class,'logout']);
+  
+//Restraunts 
+Route::group(['prefix'=> 'restarunt'],function(){
+    Route::get('list',[RestaruntController::class,'index']);
+    Route::get('details/{id}',[RestaruntController::class,'restaruntDetails']);
+});
+
+//Products
+Route::group(['prefix'=> 'product'],function(){
+    Route::get('list',[RestaruntController::class,'index']);
+    Route::get('details/{id}',[RestaruntController::class,'productDetails']);
+});
 
 
 });
