@@ -15,7 +15,7 @@ use App\Http\Controllers\admin\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
+Route::get('/layout', function () {
 
     return view('layouts.master');
 });
