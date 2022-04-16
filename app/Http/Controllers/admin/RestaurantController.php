@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use App\Http\Interfaces\admin\RestaurantsInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
+    protected $_RestaurantInterface;
+    
+    public function __construct(RestaurantsInterface $RestaurantInterface){
+        $this->_RestaurantInterface=$RestaurantInterface;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,7 @@ class RestaurantController extends Controller
     public function index()
     {
         //
+        return $this->_RestaurantInterface->index();
     }
 
     /**
@@ -25,6 +31,8 @@ class RestaurantController extends Controller
     public function create()
     {
         //
+        return $this->_RestaurantInterface->create();
+        
     }
 
     /**
@@ -36,6 +44,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
         //
+        return $this->_RestaurantInterface->store($request);
     }
 
     /**
@@ -47,6 +56,7 @@ class RestaurantController extends Controller
     public function show($id)
     {
         //
+        return $this->_RestaurantInterface->show($id);
     }
 
     /**
@@ -58,6 +68,7 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         //
+        return $this->_RestaurantInterface->edit($id);
     }
 
     /**
@@ -70,6 +81,7 @@ class RestaurantController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return $this->_RestaurantInterface->update($request, $id);
     }
 
     /**
@@ -81,5 +93,6 @@ class RestaurantController extends Controller
     public function destroy($id)
     {
         //
+        return $this->_RestaurantInterface->destroy($id);
     }
 }

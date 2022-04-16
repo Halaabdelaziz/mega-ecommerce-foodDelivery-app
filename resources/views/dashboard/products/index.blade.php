@@ -26,9 +26,11 @@
                                         <tr>
                                             <th>Image</th>
                                             <th>Name</th>
-                                            <th>Phone</th>
-                                            <th>Address</th>
                                             <th>Description</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Category</th>
+                                            <th>Restaurant</th>
                                             <th>Created at</th>
                                             <th>Update at</th>
                                             <th>Modify</th>
@@ -36,18 +38,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($restaurants as $restaurant)
+                                        @foreach($Products as $Product)
                                         <tr>
-                                            <td><img src="{{asset('public/images/'.$restaurant->imageUrl)}}" class="img-fluid w-50"></td>
-                                            <td>{{$restaurant->name}}</td>
-                                            <td>{{$restaurant->phone}}</td>
-                                            <td>{{$restaurant->address}}</td>
-                                            <td>{{$restaurant->description}}</td>
-                                            <td>{{$restaurant->created_at}}</td>
-                                            <td>{{$restaurant->updated_at}}</td>
-                                            <td><a class="btn btn-primary" href="/restaurant/{{$restaurant->id}}/edit">Edit</a></td>
+                                            <td><img src='{{asset("images/$Product->imageUrl")}}' class="img-fluid w-50"></td>
+                                            <td>{{$Product->name}}</td>
+                                            <td>{{$Product->description}}</td>
+                                            <td>{{$Product->price}}</td>
+                                            <td>{{$Product->stock}}</td>
+                                            <td>{{$Product->created_at}}</td>
+                                            <td>{{$Product->updated_at}}</td>
+                                            <td><a class="btn btn-primary" href="/restaurants/{{$Product->id}}/edit">Edit</a></td>
                                             <td>
-                                                <form method="post" action="/restaurant/{{$restaurant->id}}">
+                                                <form method="post" action="/Product/{{$Product->id}}">
                                                     @method("delete")
                                                     @csrf
                                                     <input type="submit" name="delete" class="btn btn-danger" value="Delete">

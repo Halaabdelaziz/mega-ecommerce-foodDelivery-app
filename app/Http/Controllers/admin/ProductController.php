@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use App\Http\Interfaces\admin\ProductInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $_ProductInterface;
+    
+    public function __construct(ProductInterface $ProductInterface){
+        $this->_ProductInterface=$ProductInterface;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,8 @@ class ProductController extends Controller
     public function index()
     {
         //
+        return $this->_ProductInterface->index();
+
     }
 
     /**
@@ -25,6 +32,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return $this->_ProductInterface->create();
     }
 
     /**
@@ -36,6 +44,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        return $this->_ProductInterface->store($request);
     }
 
     /**
@@ -47,6 +56,7 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+        return $this->_ProductInterface->show();
     }
 
     /**
@@ -58,6 +68,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        return $this->_ProductInterface->edit($id);
     }
 
     /**
@@ -70,6 +81,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return $this->_ProductInterface->update($request,$id);
     }
 
     /**
@@ -81,5 +93,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+        return $this->_ProductInterface->destroy($id);
     }
 }
