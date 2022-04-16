@@ -1,14 +1,28 @@
 <?php
 
+use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\RestaurantController;
 use App\Http\Controllers\admin\ProductController;
 
-Route::get('/', function () {
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+Route::get('/layout', function () {
+
     return view('layouts.master');
 });
 
+Route::group(['middleware' =>['auth', 'verified']],function (){
 // Categories' routes
 Route::prefix('category')->group(function () {
     Route::get('/index',[CategoryController::class,'index'])->name('getCategories');
@@ -38,3 +52,20 @@ Route::prefix('product')->group(function () {
     Route::patch('/{id}/edit',[ProductController::class,'update']);
     Route::delete('/{id}',[ProductController::class,'destroy']);
 });
+
+});
+
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
