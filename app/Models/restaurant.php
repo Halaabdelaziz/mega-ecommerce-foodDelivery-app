@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class restaurant extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','img','adress','phone'];
+    protected $fillable = ['name','imageUrl','address','phone','description'];
     protected $hidden=['created_at','updated_at','pivot'];
 
 

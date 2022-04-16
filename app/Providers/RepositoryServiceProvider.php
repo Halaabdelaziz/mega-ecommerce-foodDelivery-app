@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Http\Repositories\CategoriesRepository;
+use App\Http\Repositories\admin\CategoriesRepository;
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -18,10 +18,10 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Http\Interfaces\admin\CategoriesInterface','App\Http\Repositories\admin\CategoriesRepository'
         );
         $this->app->bind(
-            'App\Http\Interfaces\admin\RestaurantInterface',' App\Http\Repositories\admin\RestaurantsRepository'
+            'App\Http\Interfaces\admin\RestaurantsInterface','App\Http\Repositories\admin\RestaurantsRepository'
         );
         $this->app->bind(
-            'App\Http\Interfaces\admin\ProductInterface',' App\Http\Repositories\admin\ProductsRepository'
+            'App\Http\Interfaces\admin\ProductInterface','App\Http\Repositories\admin\ProductsRepository'
         );
         $this->app->bind(
             'App\Http\Interfaces\RestaruntInterface',
