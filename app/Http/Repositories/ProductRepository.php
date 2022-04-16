@@ -7,7 +7,7 @@ use App\Http\Interfaces\ProductInterface;
 
 
 
-class ProductRepositories implements ProductInterface{
+class ProductRepository implements ProductInterface{
 
     use ApiResponceTrait;
     
@@ -21,15 +21,15 @@ class ProductRepositories implements ProductInterface{
     
     public function index(){
         
-        $products=$this->productModel::select('id','name','img',)->get();
+        $products=$this->productModel::select('id','name','price','stock',)->get();
         return $this->apiResponce(200,'All products',null,$products);
             
     }
     public function  productDetails($id){
          
-        $product = $this->productModel::where('id',$id)->get();
+        $product = $this->productModel::where('id',$id)->with('restarunt:id,name')->get();
 
-       return $this->apiResponce(200,'Restarunt details ',null,$product);
+       return $this->apiResponce(200,'product details ',null,$product);
 
    }
 }

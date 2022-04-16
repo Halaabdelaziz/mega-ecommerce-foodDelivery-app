@@ -19,5 +19,8 @@ class ProductController extends Controller
         
             return $this->ProductInterface->index();
             }
-  
+  public function productDetails($id){
+        return $this->ProductInterface->productDetails($id);
+
+  }
 }
