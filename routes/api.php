@@ -43,13 +43,14 @@ Route::group(['prefix'=> 'product'],function(){
 Route::group(['prefix'=> 'cart'],function(){
     Route::post('add',[CartController::class,'addToCart']);
     Route::get('/delete/{id}',[CartController::class,'delete']);
-    Route::post('/update/{id}',[CartController::class,'update']);
+    Route::post('/update',[CartController::class,'update']);
     Route::get('/usercart',[CartController::class,'userCart']);
     
 });
 //order
 //Cart
 Route::group(['prefix'=> 'order'],function(){
+    Route::post('/create',[OrderController::class,'createOrder']);
     Route::post('/checkout',[OrderController::class,'checkout']);
     
 });

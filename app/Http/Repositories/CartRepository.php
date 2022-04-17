@@ -24,6 +24,7 @@ class CartRepository implements CartInterface{
         $cart=  cart::create([
             'user_id'=> Auth::user()->id,
             'product_id'=>$request->product_id,
+            'restaurant_id'=>$request->restaurant_id,
             'count'=> $request->count 
         ]);
       }
@@ -32,10 +33,10 @@ class CartRepository implements CartInterface{
 
 
     }
-    public function update ($request,$id){
-        $cart_id=cart::find($id);
+    public function update ($request){
+      
         
-        $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$cart_id->product_id]])->first();
+        $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$request->product_id]])->first();
         if($cart){
             $cart->update([
                 'count'=>$request->count
@@ -59,7 +60,7 @@ class CartRepository implements CartInterface{
 
     public function userCart(){
 
-        $cart= cart::with('products:id,name,price')->where('user_id',Auth::user()->id)->get();
+        $cart= cart::with('restaurants:id,name','products:id,name,price,imageUrl,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get();
         return $this->apiResponce(200,'user cart ',null,$cart);
     }
     

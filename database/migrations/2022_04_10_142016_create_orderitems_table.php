@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
             $table->integer('count');
             $table->double('unit_price');
+            $table->double('delivery_fee');
             $table->double('net_price');
             $table->timestamps();
         });
