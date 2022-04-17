@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RestaruntController;
 use Illuminate\Http\Request;
@@ -44,6 +45,12 @@ Route::group(['prefix'=> 'cart'],function(){
     Route::get('/delete/{id}',[CartController::class,'delete']);
     Route::post('/update/{id}',[CartController::class,'update']);
     Route::get('/usercart',[CartController::class,'userCart']);
+    
+});
+//order
+//Cart
+Route::group(['prefix'=> 'order'],function(){
+    Route::post('/checkout',[OrderController::class,'checkout']);
     
 });
 
