@@ -23,6 +23,8 @@ return new class extends Migration
             $table->double('unit_price');
             $table->double('delivery_fee');
             $table->double('net_price');
+            $table->string('adress');
+            $table->string('email');
             $table->timestamps();
         });
     }

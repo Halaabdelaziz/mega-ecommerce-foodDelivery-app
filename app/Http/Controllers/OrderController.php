@@ -18,4 +18,8 @@ class OrderController extends Controller
     public function checkout(Request $request){
           return $this->OrderInterface->checkout($request);
     }
+    public function orderDetails(){
+        return $this->OrderInterface->orderDetails();
+
+    }
 }

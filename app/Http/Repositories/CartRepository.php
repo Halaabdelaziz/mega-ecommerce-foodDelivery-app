@@ -2,7 +2,7 @@
 
 namespace App\Http\Repositories;
 
-use App\Models\cart;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Interfaces\CartInterface;
@@ -15,13 +15,13 @@ class CartRepository implements CartInterface{
     public function addToCart($request){
       
     
-      $cart= cart::where([['product_id',$request->product_id],['user_id',Auth::user()->id]])->first();
+      $cart= Cart::where([['product_id',$request->product_id],['user_id',Auth::user()->id]])->first();
       if($cart){
           $cart->update([
           'count'=> $cart->count + $request->count
       ]);
       }else{
-        $cart=  cart::create([
+        $cart=  Cart::create([
             'user_id'=> Auth::user()->id,
             'product_id'=>$request->product_id,
             'restaurant_id'=>$request->restaurant_id,
@@ -60,7 +60,7 @@ class CartRepository implements CartInterface{
 
     public function userCart(){
 
-        $cart= cart::with('restaurants:id,name','products:id,name,price,imageUrl,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get();
+        $cart= Cart::with('restaurants:id,name','products:id,name,price,imageUrl,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get();
         return $this->apiResponce(200,'user cart ',null,$cart);
     }
     

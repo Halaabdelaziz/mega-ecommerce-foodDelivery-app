@@ -50,7 +50,7 @@ Route::group(['prefix'=> 'cart'],function(){
 //order
 //Cart
 Route::group(['prefix'=> 'order'],function(){
-    Route::post('/create',[OrderController::class,'createOrder']);
+    Route::get('/details',[OrderController::class,'orderDetails']);
     Route::post('/checkout',[OrderController::class,'checkout']);
     
 });
