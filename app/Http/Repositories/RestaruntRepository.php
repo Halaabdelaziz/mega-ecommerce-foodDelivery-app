@@ -17,17 +17,14 @@ class RestaruntRepository implements RestaruntInterface{
     }
     public function index(){
         
-        $Restarunts=$this->restaurantModel::select('id','name','img')->get();
+        $Restarunts=$this->restaurantModel::select('id','name','imageUrl','description')->get();
         return $this->apiResponce(200,'All Restarunts',null,$Restarunts);
             
     }
 
     public function restaruntDetails($id){
          
-         $Restarunts = $this->restaurantModel::where('id',$id)->with('products:id,name,description')->get();
-        
-        
-
+         $Restarunts = $this->restaurantModel::where('id',$id)->with('products:id,name,description,price')->get();
         return $this->apiResponce(200,'Restarunt details ',null,$Restarunts);
 
     }

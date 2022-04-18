@@ -18,8 +18,8 @@ class CartController extends Controller
    public function addToCart(CartRequest $request){
        return $this->cartInterface->addToCart($request);
    }
-   public function update ( CartRequest $request,$id){
-    return $this->cartInterface->update($request,$id);
+   public function update ( CartRequest $request){
+    return $this->cartInterface->update($request);
    }
    public function delete ($id){
     return $this->cartInterface->delete($id);
