@@ -58,13 +58,13 @@ class OrderRepository implements OrderInterface
         });
         
        
-        return $this->apiResponce(200,'Order was created');
+        return $this->orderDetails();
     }
     public function orderDetails(){
         $order=Order::latest()->first();
         $order_items=Orderitem::with('order:id,totalprice')->where('order_id',$order->id)->get();
         $data= $order_items;
-        return $this->apiResponce(200,'Order details',null,$data);
+        return $this->apiResponce(200,'Order was created',null,$data);
 
 
     }
