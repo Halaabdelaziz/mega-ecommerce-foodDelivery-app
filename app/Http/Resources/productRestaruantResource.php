@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\productResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class restaruntResource extends JsonResource
+class productRestaruantResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,14 +14,12 @@ class restaruntResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+         return [
             'id'=>$this->id,
             'image'=>$this->image,
             'name'=>$this->name,
             'description'=>$this->description,
-            'address'=>$this->address,
-            'phone'=>$this->phone,
-            'products'=>  productRestaruantResource::collection($this->products),
+            'price'=>$this->price,  
         ];
     }
 }

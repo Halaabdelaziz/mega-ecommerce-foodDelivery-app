@@ -29,7 +29,7 @@ class CartRepository implements CartInterface{
         ]);
       }
     
-      return $this->apiResponce(200,'added to cart',null,$cart);
+      return $this->apiResponce(200,'added to cart');
 
 
     }
