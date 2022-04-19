@@ -22,17 +22,13 @@ class RestaurantsRepository implements RestaurantsInterface{
             $restaurant->phone=$request->phone;
             $restaurant->address=$request->address;
             $restaurant->description=$request->description;
-            if($request->has('imageUrl')){
-                // $FileName = $request->has('imageUrl')->getClientOriginalName();
-                // $file = pathinfo($FileName , PATHINFO_FILENAME);
-                $extension = $request->file('imageUrl')->getClientOriginalExtension();
+            if($request->has('image')){
+                $extension = $request->file('image')->getClientOriginalExtension();
                 $imagefilesaving = time(). '.'.$extension;
-                $path = $request->file('imageUrl')->move(public_path('public/images'), $imagefilesaving);
-                
-                // dd($FileName);
-                $restaurant->imageUrl=$imagefilesaving;
+                $path = $request->file('image')->move(public_path('public/images'), $imagefilesaving);
+                $restaurant->image=$imagefilesaving;
             }
-            // dd($request);
+
             $restaurant->save();
             return redirect()->route('getRestaurants');
         }
@@ -51,14 +47,14 @@ class RestaurantsRepository implements RestaurantsInterface{
             $restaurant->phone=$request->phone;
             $restaurant->description=$request->description;
             $restaurant->address=$request->address;
-            if($request->input('imageUrl')){
-                $FileName = $request->input('imageUrl')->getClientOriginalName();
+            if($request->input('image')){
+                $FileName = $request->input('image')->getClientOriginalName();
                 $file = pathinfo($FileName , PATHINFO_FILENAME);
-                $extension = $request->file('imageUrl')->getClientOriginalExtension();
+                $extension = $request->file('image')->getClientOriginalExtension();
                 $imagefilesaving = str_replace(' ' , '' , $file).'-'.rand() . ''.time(). '.'.$extension;
-                $path = $request->file('imageUrl')->move(public_path('public/images'), $imagefilesaving);
+                $path = $request->file('image')->move(public_path('public/images'), $imagefilesaving);
                 
-                $restaurant->imageUrl=$imagefilesaving;
+                $restaurant->image=$imagefilesaving;
             }
             $restaurant->save();
             return redirect()->route('getRestaurants');

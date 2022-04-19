@@ -36,9 +36,24 @@
                                                 id="exampleInputDescription" aria-describedby="textHelp"
                                                 placeholder="Enter Product Quantity...">
                                         </div>
-                                        {!! Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S'); !!}
                                         <div class="form-group">
-                                            <input type="file" name="imageUrl" class="btn btn-primary btn-user btn-block">
+                                            <strong>Category</strong>
+                                            <select class="form-control" name="category_id">
+                                                @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <strong>Restaurant</strong>
+                                            <select class="form-control" name="restaurant_id">
+                                                @foreach($restaurants as $restaurant)
+                                                <option value="{{$restaurant->id}}">{{$restaurant->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="file" name="image" class="btn btn-primary btn-user btn-block">
                                         </div>
                                         <button type="submit" class="btn text-white btn-user btn-block">
                                             Create Product
