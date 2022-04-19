@@ -9,7 +9,7 @@ use App\Http\Interfaces\admin\ProductInterface;
 class ProductsRepository implements ProductInterface{
         // list all Products
         public function index(){
-            $products = Product::with('restuarants:name,id')->get(); 
+            $products = Product::with('restarunt:name,id')->get(); 
             return view('dashboard.Products.index',['Products'=>$products]);
         }
     

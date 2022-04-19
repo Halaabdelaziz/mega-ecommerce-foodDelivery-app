@@ -46,7 +46,7 @@
                                             <td>{{$Product->price}}</td>
                                             <td>{{$Product->stock}}</td>
                                             <td>{{$Product->category->name}}</td>
-                                            @foreach($Product->restuarants as $restuarant)
+                                            @foreach($Product->restarunt as $restuarant)
                                                 <td>{{$restuarant->name}}</td>
                                             @endforeach
                                             <td>{{$Product->created_at}}</td>
