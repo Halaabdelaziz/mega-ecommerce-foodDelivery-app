@@ -8,7 +8,8 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Traits\ApiResponceTrait;
-use GuzzleHttp\Psr7\Request;
+use App\Mail\ForgetPasswordEmail;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -55,6 +56,11 @@ class AuthController extends Controller
     return $this->apiResponce(200 ,'logged out successfully', );
   }
 
+
+   public function forgetPassword(){
+       Mail::to('essomohamed121@gmail.com')->send(new ForgetPasswordEmail());
+      
+   }
 
 
   

@@ -25,7 +25,7 @@ class RestaruntRepository implements RestaruntInterface{
 
     public function restaruntDetails($id){
          
-         $Restarunts =  restaruntResource::collection($this->restaurantModel::where('id',$id)->with('products:id,name,description,price,image')->get());
+         $Restarunts =  restaruntResource::collection($this->restaurantModel::where('id',$id)->with('products')->get());
        
         return $this->apiResponce(200,'Restarunt details ',null,$Restarunts);
 
