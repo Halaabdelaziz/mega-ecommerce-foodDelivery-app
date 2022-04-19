@@ -22,9 +22,11 @@
                                     <form method="post" action="/category/create" class="user">
                                         @csrf
                                         <div class="form-group">
+                                        
                                             <input name="name" type="text" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="textHelp"
                                                 placeholder="Enter Category Name...">
+                                                <span class=" alert-danger ms-5 rounded">@error('name') {{$message}} @enderror</span>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Create Category
