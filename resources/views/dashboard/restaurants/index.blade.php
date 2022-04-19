@@ -38,7 +38,7 @@
                                     <tbody>
                                         @foreach($restaurants as $restaurant)
                                         <tr>
-                                            <td><img src="{{asset('public/images/'.$restaurant->imageUrl)}}" class="img-fluid w-50"></td>
+                                            <td><img src="{{asset('public/images/'.$restaurant->image)}}" class="img-fluid w-50"></td>
                                             <td>{{$restaurant->name}}</td>
                                             <td>{{$restaurant->phone}}</td>
                                             <td>{{$restaurant->address}}</td>

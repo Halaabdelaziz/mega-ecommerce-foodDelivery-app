@@ -39,7 +39,7 @@
                                                 placeholder="Enter New Restaurant Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="file" name="imageUrl" class="btn btn-primary btn-user btn-block">
+                                            <input type="file" name="image" class="btn btn-primary btn-user btn-block">
                                         </div>
                                         <button type="submit" class="btn text-white btn-user btn-block">
                                             Edit Restaurant

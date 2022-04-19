@@ -13,11 +13,11 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Restaurants</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Products</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Restaurants Data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Products Data</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -40,16 +40,20 @@
                                     <tbody>
                                         @foreach($Products as $Product)
                                         <tr>
-                                            <td><img src='{{asset("images/$Product->imageUrl")}}' class="img-fluid w-50"></td>
+                                            <td><img src='{{asset("public/img/$Product->image")}}' class="img-fluid"></td>
                                             <td>{{$Product->name}}</td>
                                             <td>{{$Product->description}}</td>
                                             <td>{{$Product->price}}</td>
                                             <td>{{$Product->stock}}</td>
+                                            <td>{{$Product->category->name}}</td>
+                                            @foreach($Product->restuarants as $restuarant)
+                                                <td>{{$restuarant->name}}</td>
+                                            @endforeach
                                             <td>{{$Product->created_at}}</td>
                                             <td>{{$Product->updated_at}}</td>
-                                            <td><a class="btn btn-primary" href="/restaurants/{{$Product->id}}/edit">Edit</a></td>
+                                            <td><a class="btn btn-primary" href="{{route('editProduct',[$Product->id])}}">Edit</a></td>
                                             <td>
-                                                <form method="post" action="/Product/{{$Product->id}}">
+                                                <form method="post" action="/product/{{$Product->id}}">
                                                     @method("delete")
                                                     @csrf
                                                     <input type="submit" name="delete" class="btn btn-danger" value="Delete">
