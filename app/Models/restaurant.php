@@ -18,6 +18,6 @@ class restaurant extends Model
         return $this->belongsToMany(Product::class,'product_id');
     }
     public function ProductRestaurant(){
-    return $this->belongsTo(ProductRestaurant::class);
+        return $this->belongsTo(ProductRestaurant::class);
     }
 }

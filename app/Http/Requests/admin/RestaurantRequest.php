@@ -37,10 +37,20 @@ class RestaurantRequest extends FormRequest
         return [
             //
             'name.required' => 'Name is required!',
-            'phone.required' => 'A title is required',
-            'phone.max' => 'A title is required',
-            'phone.min' => 'A title is required',
-            'address.required' => 'A message is required',
+            'name.string' => 'name is must be string',
+            'phone.required' => 'A Phone is required',
+            'phone.max' => 'A phone max character is 13 char',
+            'phone.min' => 'A Phone min character is 11 char',
+            'address.required' => 'A Address is required',
+            'description.required'=>'A description is required!',
+            'description.string'=>'description is must be string',
+            'description.min'=>'description min character is 5',
+            'description.max'=>'description max character is 255',
+            'image.required'=>'image is required',
+            'image.image'=>'image must be an image',
+            'image.mimes'=>'image extensions must be in (jpg,png,jpeg,gif,svg)',
+            'image.max'=>'image length max is 2048'
+
         ];
     }
 }
