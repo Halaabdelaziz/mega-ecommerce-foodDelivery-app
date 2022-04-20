@@ -22,21 +22,25 @@
                                                 id="exampleInputName" aria-describedby="textHelp"
                                                 placeholder="Enter New Product Name...">
                                         </div>
+                                        <span class="alert-danger">@error('name') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <input name="description" value="{{$product->description}}" type="text" class="form-control form-control-user"
                                                 id="exampleInputPhone" aria-describedby="textHelp"
                                                 placeholder="Enter New Product Description...">
                                         </div>
+                                        <span class="alert-danger">@error('description') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <input name="price" value="{{$product->price}}" type="text" class="form-control form-control-user"
                                                 id="exampleInputAddress" aria-describedby="textHelp"
                                                 placeholder="Enter New Product Price...">
                                         </div>
+                                        <span class="alert-danger">@error('price') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <input name="stock"  value="{{$product->stock}}" type="text" class="form-control form-control-user"
                                                 id="exampleInputDescription" aria-describedby="textHelp"
                                                 placeholder="Enter New Product Quantity...">
                                         </div>
+                                        <span class="alert-danger">@error('stock') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <strong>Category</strong>
                                             <select class="form-control" name="category_id">
@@ -45,6 +49,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <strong>Restaurant</strong>
                                             <select class="form-control" name="restaurant_id">
@@ -56,6 +61,7 @@
                                         <div class="form-group">
                                             <input type="file" name="image" class="btn btn-primary btn-user btn-block">
                                         </div>
+                                        <span class="alert-danger">@error('image') {{$message}}@enderror</span>
                                         <button type="submit" class="btn text-white btn-user btn-block">
                                             Edit Product
                                         </button>
