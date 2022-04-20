@@ -8,13 +8,13 @@ use App\Http\Resources\restaruntResource;
 use App\Http\Interfaces\RestaruntInterface;
 
 class RestaruntRepository implements RestaruntInterface{
-     
+
     use ApiResponceTrait;
     private $restaurantModel;
     
     public function __construct(restaurant $restaurant )
     {
-     $this->restaurantModel=$restaurant;   
+        $this->restaurantModel=$restaurant;   
     }
     public function index(){
         
@@ -23,10 +23,8 @@ class RestaruntRepository implements RestaruntInterface{
             
     }
 
-    public function restaruntDetails($id){
-         
+    public function restaruntDetails($id){         
          $Restarunts =  restaruntResource::collection($this->restaurantModel::where('id',$id)->with('products')->get());
-       
         return $this->apiResponce(200,'Restarunt details ',null,$Restarunts);
 
     }

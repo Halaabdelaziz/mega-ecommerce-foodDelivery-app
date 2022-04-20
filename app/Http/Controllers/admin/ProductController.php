@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Interfaces\admin\ProductInterface;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\ProductRequest;
+use App\Http\Interfaces\admin\ProductInterface;
 
 class ProductController extends Controller
 {
@@ -41,7 +42,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         //
         return $this->_ProductInterface->store($request);
@@ -78,7 +79,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         //
         return $this->_ProductInterface->update($request,$id);

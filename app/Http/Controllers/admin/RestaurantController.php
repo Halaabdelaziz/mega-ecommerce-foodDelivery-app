@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Interfaces\admin\RestaurantsInterface;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\RestaurantRequest;
+use App\Http\Interfaces\admin\RestaurantsInterface;
 
 class RestaurantController extends Controller
 {
@@ -41,7 +42,7 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RestaurantRequest $request)
     {
         //
         return $this->_RestaurantInterface->store($request);
@@ -78,7 +79,7 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RestaurantRequest $request, $id)
     {
         //
         return $this->_RestaurantInterface->update($request, $id);

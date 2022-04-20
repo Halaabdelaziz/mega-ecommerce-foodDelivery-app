@@ -41,7 +41,6 @@ class RestaurantsRepository implements RestaurantsInterface{
 
         // update restaurant data
         public function update($request, $id){
-            dd($id);
             $restaurant = restaurant::find($id);
             $restaurant->name=$request->name;
             $restaurant->phone=$request->phone;
