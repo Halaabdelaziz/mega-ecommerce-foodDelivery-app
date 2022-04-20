@@ -38,4 +38,6 @@ class CartRequest extends FormRequest
        
         throw (new ValidationException($validator, $response))->status(400);
     }
+
+    
 }
