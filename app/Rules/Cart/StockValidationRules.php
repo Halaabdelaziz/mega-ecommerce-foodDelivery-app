@@ -9,6 +9,7 @@ use Illuminate\Contracts\Validation\Rule;
 
 class StockValidationRules implements Rule
 {
+    
     /**
      * Create a new rule instance.
      *
