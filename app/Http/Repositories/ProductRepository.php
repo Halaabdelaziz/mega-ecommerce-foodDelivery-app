@@ -26,7 +26,7 @@ class ProductRepository implements ProductInterface{
             
     }
     public function  productDetails($id){ 
-        $product=  productResource::collection($this->productModel::where('id',$id)->with('category:id,name','restarunt:id,name,image')->get());
+        $product=  productResource::collection($this->productModel::where('id',$id)->with('category:id,name','restarunt:id,name')->get());
         
        return $this->apiResponce(200,'product details',null,$product);
 

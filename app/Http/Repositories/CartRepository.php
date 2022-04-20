@@ -3,6 +3,7 @@
 namespace App\Http\Repositories;
 
 use App\Models\Cart;
+use App\Http\Resources\cartResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Interfaces\CartInterface;
@@ -29,7 +30,7 @@ class CartRepository implements CartInterface{
         ]);
       }
     
-      return $this->apiResponce(200,'added to cart');
+      return $this->apiResponce(200,'added to cart',$cart);
 
 
     }
@@ -60,7 +61,7 @@ class CartRepository implements CartInterface{
 
     public function userCart(){
 
-        $cart= Cart::with('restaurants:id,name','products:id,name,price,image,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get();
+        $cart= cartResource::collection(Cart::with('restaurants:id,name','products:id,name,price,image,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get());
         return $this->apiResponce(200,'user cart ',null,$cart);
     }
     
