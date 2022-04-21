@@ -21,40 +21,49 @@
                                                 id="exampleInputName" aria-describedby="textHelp"
                                                 placeholder="Enter Product Name...">
                                         </div>
+                                        <span class="alert-danger">@error('name') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <input name="description" type="text" class="form-control form-control-user"
                                                 id="exampleInputPhone" aria-describedby="textHelp"
                                                 placeholder="Enter Product Description...">
                                         </div>
+                                        <span class="alert-danger">@error('description') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <input name="price" type="text" class="form-control form-control-user"
                                                 id="exampleInputAddress" aria-describedby="textHelp"
                                                 placeholder="Enter Product Price...">
                                         </div>
+                                        <span class="alert-danger">@error('price') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <input name="stock" type="text" class="form-control form-control-user"
                                                 id="exampleInputDescription" aria-describedby="textHelp"
                                                 placeholder="Enter Product Quantity...">
                                         </div>
+                                        <span class="alert-danger">@error('stock') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <strong>Category</strong>
                                             <select class="form-control" name="category_id">
+                                                <option value="add Category" disabled selected="selected">add Category</option>
                                                 @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <span class="alert-danger">@error('category_id') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <strong>Restaurant</strong>
                                             <select class="form-control" name="restaurant_id">
+                                                <option value="add restaurant" disabled selected="selected">add Restaurant</option>
                                                 @foreach($restaurants as $restaurant)
-                                                <option value="{{$restaurant->id}}">{{$restaurant->name}}</option>
+                                                    <option value="{{$restaurant->id}}">{{$restaurant->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <span class="alert-danger">@error('restaurant_id') {{$message}}@enderror</span>
                                         <div class="form-group">
                                             <input type="file" name="image" class="btn btn-primary btn-user btn-block">
                                         </div>
+                                        <span class="alert-danger">@error('image') {{$message}}@enderror</span>
                                         <button type="submit" class="btn text-white btn-user btn-block">
                                             Create Product
                                         </button>

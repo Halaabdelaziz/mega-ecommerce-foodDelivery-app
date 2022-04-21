@@ -23,6 +23,7 @@
                                             <input name="name" value="{{$name}}" type="text" class="form-control form-control-user"
                                                 id="exampleInputText" aria-describedby="textHelp"
                                                 placeholder="Enter New Category Name...">
+                                                <span class=" alert-danger ms-5 rounded">@error('name') {{$message}} @enderror</span>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Edit Category

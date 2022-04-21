@@ -21,24 +21,29 @@
                                                 id="exampleInputName" aria-describedby="textHelp"
                                                 placeholder="Enter Restaurant Name...">
                                         </div>
+                                        <span class="alert-danger">@error('name') {{$message}} @enderror</span>
                                         <div class="form-group">
                                             <input name="phone" type="text" class="form-control form-control-user"
                                                 id="exampleInputPhone" aria-describedby="textHelp"
                                                 placeholder="Enter Restaurant phone...">
                                         </div>
+                                        <span class="alert-danger">@error('phone') {{$message}} @enderror</span>
                                         <div class="form-group">
                                             <input name="address" type="text" class="form-control form-control-user"
                                                 id="exampleInputAddress" aria-describedby="textHelp"
                                                 placeholder="Enter Restaurant Address...">
                                         </div>
+                                        <span class="alert-danger">@error('address') {{$message}} @enderror</span>
                                         <div class="form-group">
                                             <input name="description" type="text" class="form-control form-control-user"
                                                 id="exampleInputDescription" aria-describedby="textHelp"
                                                 placeholder="Enter Restaurant description...">
                                         </div>
+                                        <span class="alert-danger">@error('description') {{$message}} @enderror</span>
                                         <div class="form-group">
                                             <input type="file" name="image" class="btn btn-primary btn-user btn-block">
                                         </div>
+                                        <span class="alert-danger">@error('image') {{$message}} @enderror</span>
                                         <button type="submit" class="btn text-white btn-user btn-block">
                                             Create Restaurant
                                         </button>

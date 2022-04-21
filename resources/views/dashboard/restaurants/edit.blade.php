@@ -15,7 +15,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form method="post" action="restaurants/{{$id}}/edit" class="user" enctype="multipart/form-data">
+                                    <form method="post" action="/restaurant/{{$id}}/edit" class="user" enctype="multipart/form-data">
                                         @method('patch')
                                         @csrf
                                         <div class="form-group">
@@ -23,24 +23,29 @@
                                                 id="exampleInputEmail" aria-describedby="textHelp"
                                                 placeholder="Enter New Restaurant Name...">
                                         </div>
+                                        <span class="alert-danger">@error('name') {{$message}} @enderror</span>
                                         <div class="form-group">
                                             <input name="phone" type="text" value="{{$phone}}"  class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="textHelp"
                                                 placeholder="Enter New Restaurant phone...">
                                         </div>
+                                        <span class="alert-danger">@error('phone') {{$message}} @enderror</span>
                                         <div class="form-group">
                                             <input name="address" type="text" value="{{$address}}"  class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="textHelp"
                                                 placeholder="Enter New Restaurant Address...">
                                         </div>
+                                        <span class="alert-danger">@error('address') {{$message}} @enderror</span>
                                         <div class="form-group">
                                             <input name="description" type="text" value="{{$description}}"  class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="textHelp"
                                                 placeholder="Enter New Restaurant Address...">
                                         </div>
+                                        <span class="alert-danger">@error('description') {{$message}} @enderror</span>
                                         <div class="form-group">
-                                            <input type="file" name="image" class="btn btn-primary btn-user btn-block">
+                                            <input type="file" value="{{$image}}" name="image" class="btn btn-primary btn-user btn-block">
                                         </div>
+                                        <span class="alert-danger">@error('image') {{$message}} @enderror</span>
                                         <button type="submit" class="btn text-white btn-user btn-block">
                                             Edit Restaurant
                                         </button>
