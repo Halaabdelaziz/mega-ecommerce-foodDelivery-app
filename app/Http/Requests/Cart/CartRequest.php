@@ -30,6 +30,7 @@ class CartRequest extends FormRequest
         return [
            'product_id'=>'required|exists:products,id',
            'count'=>['required', new StockValidationRules()],
+           'restaurant_id'=>'required|exists:restaurants,id'
         ];
     }
     public function failedValidation( $validator)
@@ -38,4 +39,6 @@ class CartRequest extends FormRequest
        
         throw (new ValidationException($validator, $response))->status(400);
     }
+
+    
 }

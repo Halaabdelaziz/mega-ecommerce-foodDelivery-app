@@ -43,7 +43,7 @@ Route::group(['prefix'=> 'product'],function(){
 //Cart
 Route::group(['prefix'=> 'cart'],function(){
     Route::post('add',[CartController::class,'addToCart']);
-    Route::get('/delete/{id}',[CartController::class,'delete']);
+    Route::post('/delete',[CartController::class,'delete']);
     Route::post('/update',[CartController::class,'update']);
     Route::get('/usercart',[CartController::class,'userCart']);
     

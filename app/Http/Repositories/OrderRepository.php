@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Orderitem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\orderResource;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Interfaces\OrderInterface;
 use App\Rules\Cart\OrderStockValidation;
@@ -27,6 +28,11 @@ class OrderRepository implements OrderInterface
             return $this->apiResponce(400, 'validation error ', $validation->errors());
         }
         $cartItems = cart::where('user_id', auth()->user()->id)->with('products')->get();
+        if( is_null($cartItems) ){
+            return $this->apiResponce(400, 'cart is empty' );
+                
+        }
+        
         $totalPrice = 0;
 
         $totalPrice = $cartItems->sum(function ($item) {
@@ -61,7 +67,7 @@ class OrderRepository implements OrderInterface
     }
     public function orderDetails(){
         $order=Order::where('user_id',Auth::user()->id)->first();
-        $order_items=Orderitem::with('order:id,totalprice')->where('order_id',$order->id)->get();
+        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$order->id)->get());
         $data= $order_items;
         return $this->apiResponce(200,'Order was created',null,$data);
 

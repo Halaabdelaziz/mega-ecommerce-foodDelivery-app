@@ -3,6 +3,7 @@
 namespace App\Http\Repositories;
 
 use App\Models\Cart;
+use App\Http\Resources\cartResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Interfaces\CartInterface;
@@ -46,9 +47,9 @@ class CartRepository implements CartInterface{
         return $this->apiResponce(400,'cart not found');
 
     }
-    public function delete ($id){
+    public function delete ($request){
        
-            $cart= Cart::find($id);
+        $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$request->product_id]])->first();
             if(is_null($cart)){
                 return $this->apiResponce(400,' cart not found');
             }
@@ -60,7 +61,7 @@ class CartRepository implements CartInterface{
 
     public function userCart(){
 
-        $cart= Cart::with('restaurants:id,name','products:id,name,price,image,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get();
+        $cart= cartResource::collection(Cart::with('restaurants:id,name','products:id,name,price,image,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get());
         return $this->apiResponce(200,'user cart ',null,$cart);
     }
     

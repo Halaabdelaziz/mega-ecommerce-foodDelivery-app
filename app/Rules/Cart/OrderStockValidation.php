@@ -48,6 +48,6 @@ class OrderStockValidation implements Rule
      */
     public function message()
     {
-        return 'stock error ';
+        return 'stock error or cart empty ';
     }
 }

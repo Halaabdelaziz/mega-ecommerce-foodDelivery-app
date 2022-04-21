@@ -24,6 +24,7 @@ return new class extends Migration
             $table->double('net_price');
             $table->string('address');
             $table->string('phone');
+            $table->enum('status',['Pending','Info Received','In Transit','Out for Delivery','Delivered','Canceled']);
             $table->timestamps();
         });
     }
