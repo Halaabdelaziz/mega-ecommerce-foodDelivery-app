@@ -28,6 +28,11 @@ class OrderRepository implements OrderInterface
             return $this->apiResponce(400, 'validation error ', $validation->errors());
         }
         $cartItems = cart::where('user_id', auth()->user()->id)->with('products')->get();
+        if( is_null($cartItems) ){
+            return $this->apiResponce(400, 'cart is empty' );
+                
+        }
+        
         $totalPrice = 0;
 
         $totalPrice = $cartItems->sum(function ($item) {

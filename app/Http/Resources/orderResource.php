@@ -22,7 +22,8 @@ class orderResource extends JsonResource
              'count'=>$this->count,
              'unit_price'=>$this->unit_price,
              'net_price'=>$this->net_price,
-             'order'=>$this->order
+             'order'=>$this->order,
+             'status'=>$this->status
            
         ];
     }

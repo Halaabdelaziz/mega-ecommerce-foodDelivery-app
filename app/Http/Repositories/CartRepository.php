@@ -30,7 +30,7 @@ class CartRepository implements CartInterface{
         ]);
       }
     
-      return $this->apiResponce(200,'added to cart',$cart);
+      return $this->apiResponce(200,'added to cart');
 
 
     }
@@ -47,9 +47,9 @@ class CartRepository implements CartInterface{
         return $this->apiResponce(400,'cart not found');
 
     }
-    public function delete ($id){
+    public function delete ($request){
        
-            $cart= Cart::find($id);
+        $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$request->product_id]])->first();
             if(is_null($cart)){
                 return $this->apiResponce(400,' cart not found');
             }

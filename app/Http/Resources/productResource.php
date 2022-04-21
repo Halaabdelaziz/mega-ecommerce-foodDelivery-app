@@ -23,6 +23,6 @@ class productResource extends JsonResource
             'categoery'=>$this->category,
             'restarunt'=>$this->restarunt
             
-        ];;
+        ];
     }
 }
