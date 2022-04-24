@@ -12,9 +12,7 @@ class Cart extends Model
     protected $fillable=['product_id','user_id','count','restaurant_id'];
     protected $hidden =['created_at','updated_at'];
 
-     public function users(){
-        return $this->belongsTo(User::class);
-     }
+     
     public function products(){
         return $this->belongsTo(Product::class,'product_id','id');
     }

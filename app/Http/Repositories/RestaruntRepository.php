@@ -2,9 +2,10 @@
 namespace App\Http\Repositories;
 
 use App\Models\restaurant;
-use App\Http\Interfaces\RestaruntInterface;
-use App\Http\Traits\ApiResponceTrait;
 use App\Models\res_Product;
+use App\Http\Traits\ApiResponceTrait;
+use App\Http\Resources\restaruntResource;
+use App\Http\Interfaces\RestaruntInterface;
 
 class RestaruntRepository implements RestaruntInterface{
 
@@ -17,14 +18,13 @@ class RestaruntRepository implements RestaruntInterface{
     }
     public function index(){
         
-        $Restarunts=$this->restaurantModel::select('id','name','imageUrl','description')->get();
+        $Restarunts=$this->restaurantModel::select('id','name','image','description')->get();
         return $this->apiResponce(200,'All Restarunts',null,$Restarunts);
             
     }
 
-    public function restaruntDetails($id){
-        
-        $Restarunts = $this->restaurantModel::where('id',$id)->with('products:id,name,description,price')->get();
+    public function restaruntDetails($id){         
+         $Restarunts =  restaruntResource::collection($this->restaurantModel::where('id',$id)->with('products')->get());
         return $this->apiResponce(200,'Restarunt details ',null,$Restarunts);
 
     }

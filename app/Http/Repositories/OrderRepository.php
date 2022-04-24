@@ -46,10 +46,9 @@ class OrderRepository implements OrderInterface
                     'product_id' => $cartItem->products->id,
                     'count' => $cartItem->count,
                     'unit_price' => $cartItem->products->price,
-                    'delivery_fee' =>$order->delivery_fee,
                     'net_price' => ($cartItem->count * $cartItem->products->price) ,
-                    'adress'=> $request->adress,
-                    'email'=> Auth::user()->email
+                    'address'=> $request->address,
+                    'phone'=> $request->phone
                 ]);
             }
             $product = Product::find($cartItem->products->id);
@@ -60,7 +59,7 @@ class OrderRepository implements OrderInterface
         return $this->orderDetails();
     }
     public function orderDetails(){
-        $order=Order::latest()->first();
+        $order=Order::where('user_id',Auth::user()->id)->first();
         $order_items=Orderitem::with('order:id,totalprice')->where('order_id',$order->id)->get();
         $data= $order_items;
         return $this->apiResponce(200,'Order was created',null,$data);

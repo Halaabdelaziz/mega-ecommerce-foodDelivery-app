@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
+Route::post('/forgetpassword',[AuthController::class,'forgetPassword']);
 Route::group(['middleware' => ['auth:sanctum']],function(){
 Route::get('/logout',[AuthController::class,'logout']);
 
@@ -54,6 +55,7 @@ Route::group(['prefix'=> 'order'],function(){
     Route::post('/checkout',[OrderController::class,'checkout']);
     
 });
+
 
 
 });
