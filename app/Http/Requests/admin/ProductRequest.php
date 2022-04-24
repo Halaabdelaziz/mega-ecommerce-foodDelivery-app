@@ -31,8 +31,7 @@ class ProductRequest extends FormRequest
             'category_id'=>'required',
             'restaurant _id'=>'required',
             'stock'=>'required|string|max:255|min:5',
-            'category_id'=>'you must choose category',
-            'restaurant _id'=>'you must choose restaurant',
+    
             'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
     }
@@ -55,8 +54,7 @@ class ProductRequest extends FormRequest
             'image.image'=>'image must be an image',
             'image.mimes'=>'image extensions must be in (jpg,png,jpeg,gif,svg)',
             'image.max'=>'image length max is 2048',
-            'category_id.required'=>'you must choose category',
-            'restaurant _id.required'=>'you must choose restaurant',
+          
 
         ];
     }

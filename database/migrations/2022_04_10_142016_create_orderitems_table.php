@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('adress');
             $table->string('email');
             $table->timestamps();
+            // order id producct name totalprice count unit price net price(c*price) addrress phone deloevery fee
+            // password
+            // passconfrimation
+            // post /resetpassword
         });
     }
 
