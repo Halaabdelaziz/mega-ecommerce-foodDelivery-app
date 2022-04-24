@@ -19,11 +19,12 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
-Route::get('/layout', function () {
-    return view('layouts.master');
-});
+
 
 Route::group(['middleware' =>['auth', 'verified']],function (){
+    Route::get('/layout', function () {
+        return view('layouts.master');
+    });
     // Categories' routes
     Route::prefix('category')->group(function () {
         Route::get('/index',[CategoryController::class,'index'])->name('getCategories');
@@ -54,8 +55,8 @@ Route::group(['middleware' =>['auth', 'verified']],function (){
         Route::delete('/{id}',[ProductController::class,'destroy']);
     });
 
-});
 
+});
 Route::get('/logout',[AuthenticatedSessionController::class,'destroy']);
 
 Route::get('/', function () {
@@ -65,7 +66,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-    // return view('Auth.login');
+     return view('Auth.login');
 });
 
 Route::get('/dashboard', function () {

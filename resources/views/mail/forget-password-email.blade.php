@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+change your password 
 
 @component('mail::button', ['url' => ''])
 Button Text

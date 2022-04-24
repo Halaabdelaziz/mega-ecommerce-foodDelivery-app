@@ -39,6 +39,14 @@ class CartRequest extends FormRequest
        
         throw (new ValidationException($validator, $response))->status(400);
     }
-
+    
+    public function messages(){
+        return[
+            'product_id.required'=>'product_id is required',
+            'count'=> 'quantity of product is required',
+             
+        ];
+        
+    }
     
 }
