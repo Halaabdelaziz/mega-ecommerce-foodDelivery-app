@@ -26,12 +26,11 @@ class ProductRequest extends FormRequest
         return [
             //
             'name'=>'required|string|max:50',
-            'description'=>'required|max:13|min:11',
+            'description'=>'required|min:11',
             'price'=>'required',
             'category_id'=>'required',
             'restaurant _id'=>'required',
-            'stock'=>'required|string|max:255|min:5',
-    
+            'stock'=>'required',
             'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
     }

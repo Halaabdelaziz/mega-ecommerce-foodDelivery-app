@@ -2,7 +2,7 @@
 
 namespace App\Rules\Cart;
 
-
+use Illuminate\Support\Facades\App;
 use App\Models\cart;
 use Illuminate\Contracts\Validation\Rule;
 
@@ -48,6 +48,6 @@ class OrderStockValidation implements Rule
      */
     public function message()
     {
-        return 'stock error ';
+        return 'stock error or cart empty ';
     }
 }

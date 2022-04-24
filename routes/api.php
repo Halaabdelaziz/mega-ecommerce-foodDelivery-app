@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ForgetPasswordController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RestaruntController;
@@ -26,7 +28,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/forgetpassword',[AuthController::class,'forgetPassword']);
-Route::group(['middleware' => ['auth:sanctum']],function(){
+
+Route::get('lang/{lang}', [LanguageController::class,'switchLang']);
+//forget password 
+Route::post('/sendemail',[ForgetPasswordController::class,'getEmail']);
+
+Route::group(['middleware' => ['auth:sanctum',]],function(){
 Route::get('/logout',[AuthController::class,'logout']);
 
 //Restraunts 
@@ -43,7 +50,7 @@ Route::group(['prefix'=> 'product'],function(){
 //Cart
 Route::group(['prefix'=> 'cart'],function(){
     Route::post('add',[CartController::class,'addToCart']);
-    Route::get('/delete/{id}',[CartController::class,'delete']);
+    Route::post('/delete',[CartController::class,'delete']);
     Route::post('/update',[CartController::class,'update']);
     Route::get('/usercart',[CartController::class,'userCart']);
     
