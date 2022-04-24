@@ -3,6 +3,8 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\LangController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\RestaurantController;
@@ -18,13 +20,16 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('lang/home', [LangController::class,'index']);
+Route::get('lang/change', [LangController::class,'change'])->name('changeLang');
 
-
+Route::post('/resetPassword',[AuthController::class,'resetPassword']);
 
 Route::group(['middleware' =>['auth', 'verified']],function (){
     Route::get('/layout', function () {
         return view('layouts.master');
     });
+
     // Categories' routes
     Route::prefix('category')->group(function () {
         Route::get('/index',[CategoryController::class,'index'])->name('getCategories');

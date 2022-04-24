@@ -33,35 +33,36 @@ Route::get('lang/{lang}', [LanguageController::class,'switchLang']);
 //forget password 
 Route::post('/sendemail',[ForgetPasswordController::class,'getEmail']);
 
+
 Route::group(['middleware' => ['auth:sanctum',]],function(){
-Route::get('/logout',[AuthController::class,'logout']);
+    Route::get('/logout',[AuthController::class,'logout']);
 
-//Restraunts 
-Route::group(['prefix'=> 'restarunt'],function(){
-    Route::get('list',[RestaruntController::class,'index']);
-    Route::get('details/{id}',[RestaruntController::class,'restaruntDetails']);
-});
+    //Restraunts 
+    Route::group(['prefix'=> 'restarunt'],function(){
+        Route::get('list',[RestaruntController::class,'index']);
+        Route::get('details/{id}',[RestaruntController::class,'restaruntDetails']);
+    });
 
-//Products
-Route::group(['prefix'=> 'product'],function(){
-    Route::get('list',[ProductController::class,'index']);
-    Route::get('details/{id}',[ProductController::class,'productDetails']);
-});
-//Cart
-Route::group(['prefix'=> 'cart'],function(){
-    Route::post('add',[CartController::class,'addToCart']);
-    Route::post('/delete',[CartController::class,'delete']);
-    Route::post('/update',[CartController::class,'update']);
-    Route::get('/usercart',[CartController::class,'userCart']);
-    
-});
-//order
-//Cart
-Route::group(['prefix'=> 'order'],function(){
-    Route::get('/details',[OrderController::class,'orderDetails']);
-    Route::post('/checkout',[OrderController::class,'checkout']);
-    
-});
+    //Products
+    Route::group(['prefix'=> 'product'],function(){
+        Route::get('list',[ProductController::class,'index']);
+        Route::get('details/{id}',[ProductController::class,'productDetails']);
+    });
+    //Cart
+    Route::group(['prefix'=> 'cart'],function(){
+        Route::post('add',[CartController::class,'addToCart']);
+        Route::post('/delete',[CartController::class,'delete']);
+        Route::post('/update',[CartController::class,'update']);
+        Route::get('/usercart',[CartController::class,'userCart']);
+        
+    });
+    //order
+    //Cart
+    Route::group(['prefix'=> 'order'],function(){
+        Route::get('/details',[OrderController::class,'orderDetails']);
+        Route::post('/checkout',[OrderController::class,'checkout']);
+        
+    });
 
 
 

@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
         return [
             //
             'name'=>'required|string|max:50',
-            'description'=>'required|min:11',
+            'description'=>'required',
             'price'=>'required',
             'category_id'=>'required',
             'restaurant _id'=>'required',
@@ -41,8 +41,6 @@ class ProductRequest extends FormRequest
             'name.required' => 'Name is required!',
             'name.string' => 'name is must be string',
             'description.required'=>'A description is required!',
-            'description.string'=>'description is must be string',
-            'description.min'=>'description min character is 5',
             'description.max'=>'description max character is 255',
             'price.required'=>'price is required',
             'stock.required'=>'stock is required',
