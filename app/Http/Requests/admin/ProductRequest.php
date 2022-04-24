@@ -53,8 +53,7 @@ class ProductRequest extends FormRequest
             'image.image'=>'image must be an image',
             'image.mimes'=>'image extensions must be in (jpg,png,jpeg,gif,svg)',
             'image.max'=>'image length max is 2048',
-            'category_id.required'=>'you must choose category',
-            'restaurant _id.required'=>'you must choose restaurant',
+          
 
         ];
     }

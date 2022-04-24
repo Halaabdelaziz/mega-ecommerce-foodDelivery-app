@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('phone');
             $table->enum('status',['Pending','Info Received','In Transit','Out for Delivery','Delivered','Canceled']);
             $table->timestamps();
+            // order id producct name totalprice count unit price net price(c*price) addrress phone deloevery fee
+            // password
+            // passconfrimation
+            // post /resetpassword
         });
     }
 

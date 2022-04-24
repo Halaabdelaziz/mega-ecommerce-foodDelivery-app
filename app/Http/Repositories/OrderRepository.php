@@ -18,6 +18,7 @@ class OrderRepository implements OrderInterface
 {
 
     use ApiResponceTrait;
+    
     public function checkout($request)
     {
         $validation = Validator::make($request->header(), [
@@ -45,7 +46,6 @@ class OrderRepository implements OrderInterface
                 'delivery_fee'=>35,
                 'totalprice' => $totalPrice 
             ]);
-
             foreach ($cartItems as $cartItem) {
             Orderitem::create([
                     'order_id' => $order->id,
@@ -62,7 +62,6 @@ class OrderRepository implements OrderInterface
             $cartItem->delete();
         });
         
-       
         return $this->orderDetails();
     }
     public function orderDetails(){
@@ -70,8 +69,5 @@ class OrderRepository implements OrderInterface
         $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$order->id)->get());
         $data= $order_items;
         return $this->apiResponce(200,'Order was created',null,$data);
-
-
     }
-   
 }

@@ -35,7 +35,7 @@ Route::post('/sendemail',[ForgetPasswordController::class,'getEmail']);
 
 Route::group(['middleware' => ['auth:sanctum',]],function(){
 Route::get('/logout',[AuthController::class,'logout']);
-  
+
 //Restraunts 
 Route::group(['prefix'=> 'restarunt'],function(){
     Route::get('list',[RestaruntController::class,'index']);
