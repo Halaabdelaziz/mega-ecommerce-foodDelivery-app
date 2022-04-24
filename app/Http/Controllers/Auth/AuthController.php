@@ -38,7 +38,7 @@ class AuthController extends Controller
   {
        $user=User::where('email',$request->email)->first();
        if(!$user || !Hash::check($request['password'],$user->password)){
-           return $this->apiResponce(400,'bad credtionals');
+           return $this->apiResponce(400,'wrong password ');
        }
        $token= $user->createToken('myapptoken')->plainTextToken;
        $array=[

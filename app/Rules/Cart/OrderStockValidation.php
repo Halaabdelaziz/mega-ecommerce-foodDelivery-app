@@ -2,7 +2,7 @@
 
 namespace App\Rules\Cart;
 
-
+use Illuminate\Support\Facades\App;
 use App\Models\cart;
 use Illuminate\Contracts\Validation\Rule;
 
