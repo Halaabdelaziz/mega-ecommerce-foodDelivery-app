@@ -4,7 +4,7 @@
 <div class="container">
     <form action="/resetPassword" method="post">
     @csrf
-        
+        <input type="hidden" name="token" id="token" value="{{$token}}">
         <div class="form-group">
             <input name="password" type="text" class="form-control form-control-user" id="exampleInputPassword" aria-describedby="textHelp" placeholder="Enter your new password...">
         </div>

@@ -22,8 +22,8 @@ class ForgetPasswordController extends Controller
     public function getEmail(ForgetPasswordRequest $request){
         return   $this->ForgetPasswordInterface->getEmail($request);
     }
-    public function resetPassword(ResetPassswordRequest $request,$token){
-        return $this->ForgetPasswordInterface->resetPassword($request,$token);
+    public function resetPassword(ResetPassswordRequest $request){
+        return $this->ForgetPasswordInterface->resetPassword($request);
     }
     
 }

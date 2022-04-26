@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 
 class ForgetPasswordEmail extends Mailable
 {
-    protected $token;
+    public $token;
     use Queueable, SerializesModels;
 
     /**
