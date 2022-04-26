@@ -45,7 +45,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">
                 <i class="fas fa-"></i>
-                    <span>Dashboard</span></a>
+                    <span>{{ __('messages.title') }}</span></a>
             </li>
 
             <!-- Divider -->
@@ -61,7 +61,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa-solid fa-utensils"></i>
-                    <span>Restaurants</span>
+                    <span>{{__('messages.restaurants')}}</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -77,7 +77,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Categories</span>
+                    <span>{{__('messages.categories')}}</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -94,7 +94,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
                     aria-expanded="true" aria-controls="collapseProducts">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Products</span>
+                    <span>{{__('messages.products')}}</span>
                 </a>
                 <div id="collapseProducts" class="collapse" aria-labelledby="headingProducts"
                     data-parent="#accordionSidebar">
@@ -173,6 +173,18 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-6 text-right mx-5">
+                                <strong>Select Language</strong>
+                            </div>
+                            <div class="col-md-4 my-3">
+                                <select class="form-control changeLang">
+                                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
+                                    <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>Arabic</option>
+                            
+                                </select>
+                            </div>
+                        </div>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -259,6 +271,15 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
 
+    <script type="text/javascript">
+        
+        var url = "{{ route('changeLang') }}";
+
+        $(".changeLang").change(function(){
+            window.location.href = url + "?lang="+ $(this).val();
+        });
+
+</script>
 
 </body>
 

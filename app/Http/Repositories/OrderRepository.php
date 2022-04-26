@@ -66,6 +66,7 @@ class OrderRepository implements OrderInterface
         return $this->orderDetails();
     }
     public function orderDetails(){
+
         $order=Order::Where('user_id',Auth::user()->id)->get()->last();
         $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$order->id)->get());
         $data= $order_items;
@@ -86,4 +87,5 @@ class OrderRepository implements OrderInterface
 
 
     }
+
 }

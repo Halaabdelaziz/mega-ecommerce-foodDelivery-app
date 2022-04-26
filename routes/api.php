@@ -33,14 +33,15 @@ Route::get('/lang', [LanguageController::class,'switchLang']);
 //forget password 
 Route::post('/sendemail',[ForgetPasswordController::class,'getEmail']);
 
-Route::group(['middleware' => ['auth:sanctum',]],function(){
-Route::get('/logout',[AuthController::class,'logout']);
 
-//Restraunts 
-Route::group(['prefix'=> 'restarunt'],function(){
-    Route::get('list',[RestaruntController::class,'index']);
-    Route::get('details/{id}',[RestaruntController::class,'restaruntDetails']);
-});
+Route::group(['middleware' => ['auth:sanctum',]],function(){
+    Route::get('/logout',[AuthController::class,'logout']);
+
+    //Restraunts 
+    Route::group(['prefix'=> 'restarunt'],function(){
+        Route::get('list',[RestaruntController::class,'index']);
+        Route::get('details/{id}',[RestaruntController::class,'restaruntDetails']);
+    });
 
 //Products
 Route::group(['prefix'=> 'product'],function(){
@@ -56,13 +57,14 @@ Route::group(['prefix'=> 'cart'],function(){
     
 });
 //order
-//Cart
+  
 Route::group(['prefix'=> 'order'],function(){
     Route::get('/details',[OrderController::class,'orderDetails']);
     Route::post('/checkout',[OrderController::class,'checkout']);
     Route::get('/userorders',[OrderController::class,'userOrders']);
     
 });
+
 
 
 
