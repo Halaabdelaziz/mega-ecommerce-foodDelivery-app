@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Http\Requests\ResetPassswordRequest;
+
 use App\Http\Controllers\Auth\AuthController;
 
 class AuthController extends Controller
@@ -58,11 +58,5 @@ class AuthController extends Controller
     return $this->apiResponce(200 ,'logged out successfully', );
   }
 
-
-
-    public function resetPassword(ResetPassswordRequest $request){
-        User::where('');
-
-    }
 
 }

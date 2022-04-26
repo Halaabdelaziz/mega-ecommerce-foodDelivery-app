@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 
 class ForgetPasswordEmail extends Mailable
 {
+    protected $token;
     use Queueable, SerializesModels;
 
     /**
@@ -16,9 +17,9 @@ class ForgetPasswordEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -29,6 +30,6 @@ class ForgetPasswordEmail extends Mailable
     public function build()
     {
         
-        return $this->markdown('mail.forget-password-email');
+        return $this->markdown('mail.forget-password-email')->with(['token'=>$this->token]);
     }
 }

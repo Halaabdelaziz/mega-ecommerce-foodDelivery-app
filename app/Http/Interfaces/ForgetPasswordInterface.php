@@ -7,4 +7,5 @@ interface ForgetPasswordInterface {
     
     public function changePasswordPage();
     public function getEmail($request);
+    public function resetPassword($request,$token);
 }
