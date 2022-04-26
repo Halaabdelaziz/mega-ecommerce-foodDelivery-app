@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use App\Mail\ForgetPasswordEmail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Interfaces\ForgetPasswordInterface;
@@ -43,8 +44,8 @@ class ForgetPasswordRepository implements ForgetPasswordInterface{
     }
 
     // reset password
-    public function resetPassword($request,$token){
-        dd($token);
+    public function resetPassword($request){
+     
         $token = $request->token;
         $passwordRest = DB::table('password_resets')->where('token', $token)->first();
 
