@@ -72,20 +72,21 @@ class OrderRepository implements OrderInterface
         $data= $order_items;
         return $this->apiResponce(200,'Order was created',null,$data);
     }
-    public function userOrders(){
-        $orders=Order::Where('user_id',Auth::user()->id)->get();
-        
 
-       foreach ($orders as $order){
-
-        return $order['id'];
-       }
-// ;        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$orders->id)->get());
-       
-//         return $this->apiResponce(200,'Order was created',null,$order_items);
-
-
-
+    public function userOrder($id){
+        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$id)->get());
+        return $this->apiResponce(200,'Order details',null,$order_items);
     }
+
+    public function userOrders(){
+      $query=Orderitem::whereHas('order',function($query){
+        $query->where('user_id',Auth()->user()->id);})->get();
+        return $this->apiResponce(200,'User orders',null,$query);
+     
+       }
+
+
+
+    
 
 }

@@ -61,6 +61,7 @@ Route::group(['prefix'=> 'cart'],function(){
 Route::group(['prefix'=> 'order'],function(){
     Route::get('/details',[OrderController::class,'orderDetails']);
     Route::post('/checkout',[OrderController::class,'checkout']);
+    Route::get('/userorder/{id}',[OrderController::class,'userOrder']);
     Route::get('/userorders',[OrderController::class,'userOrders']);
     
 });
