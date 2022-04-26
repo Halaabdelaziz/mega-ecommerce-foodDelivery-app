@@ -29,7 +29,7 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/forgetpassword',[AuthController::class,'forgetPassword']);
 
-Route::get('lang/{lang}', [LanguageController::class,'switchLang']);
+Route::get('/lang', [LanguageController::class,'switchLang']);
 //forget password 
 Route::post('/sendemail',[ForgetPasswordController::class,'getEmail']);
 
@@ -43,26 +43,28 @@ Route::group(['middleware' => ['auth:sanctum',]],function(){
         Route::get('details/{id}',[RestaruntController::class,'restaruntDetails']);
     });
 
-    //Products
-    Route::group(['prefix'=> 'product'],function(){
-        Route::get('list',[ProductController::class,'index']);
-        Route::get('details/{id}',[ProductController::class,'productDetails']);
-    });
-    //Cart
-    Route::group(['prefix'=> 'cart'],function(){
-        Route::post('add',[CartController::class,'addToCart']);
-        Route::post('/delete',[CartController::class,'delete']);
-        Route::post('/update',[CartController::class,'update']);
-        Route::get('/usercart',[CartController::class,'userCart']);
-        
-    });
-    //order
-    //Cart
-    Route::group(['prefix'=> 'order'],function(){
-        Route::get('/details',[OrderController::class,'orderDetails']);
-        Route::post('/checkout',[OrderController::class,'checkout']);
-        
-    });
+//Products
+Route::group(['prefix'=> 'product'],function(){
+    Route::get('list',[ProductController::class,'index']);
+    Route::get('details/{id}',[ProductController::class,'productDetails']);
+});
+//Cart
+Route::group(['prefix'=> 'cart'],function(){
+    Route::post('add',[CartController::class,'addToCart']);
+    Route::post('/delete',[CartController::class,'delete']);
+    Route::post('/update',[CartController::class,'update']);
+    Route::get('/usercart',[CartController::class,'userCart']);
+    
+});
+//order
+  
+Route::group(['prefix'=> 'order'],function(){
+    Route::get('/details',[OrderController::class,'orderDetails']);
+    Route::post('/checkout',[OrderController::class,'checkout']);
+    Route::get('/userorders',[OrderController::class,'userOrders']);
+    
+});
+
 
 
 
