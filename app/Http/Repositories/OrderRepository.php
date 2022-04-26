@@ -56,18 +56,34 @@ class OrderRepository implements OrderInterface
                     'address'=> $request->address,
                     'phone'=> $request->phone
                 ]);
-            }
             $product = Product::find($cartItem->products->id);
             $product->update(['stock' => $product->stock - $cartItem->count]);
             $cartItem->delete();
+            }
+           
         });
         
         return $this->orderDetails();
     }
     public function orderDetails(){
-        $order=Order::where('user_id',Auth::user()->id)->first();
+        $order=Order::Where('user_id',Auth::user()->id)->get()->last();
         $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$order->id)->get());
         $data= $order_items;
         return $this->apiResponce(200,'Order was created',null,$data);
+    }
+    public function userOrders(){
+        $orders=Order::Where('user_id',Auth::user()->id)->get();
+        
+
+       foreach ($orders as $order){
+
+        return $order['id'];
+       }
+// ;        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$orders->id)->get());
+       
+//         return $this->apiResponce(200,'Order was created',null,$order_items);
+
+
+
     }
 }

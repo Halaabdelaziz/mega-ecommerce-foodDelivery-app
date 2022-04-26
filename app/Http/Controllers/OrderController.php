@@ -22,4 +22,7 @@ class OrderController extends Controller
         return $this->OrderInterface->orderDetails();
 
     }
+    public function userOrders(){
+        return $this->OrderInterface->userOrders();
+    }
 }
