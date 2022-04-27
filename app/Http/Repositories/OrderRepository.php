@@ -79,8 +79,9 @@ class OrderRepository implements OrderInterface
     }
 
     public function userOrders(){
-      $query=Orderitem::whereHas('order',function($query){
-        $query->where('user_id',Auth()->user()->id);})->get();
+      $query=orderResource::collection(Orderitem::whereHas('order',function($query){
+        $query->where('user_id',Auth()->user()->id);})->get()
+      );
         return $this->apiResponce(200,'User orders',null,$query);
      
        }

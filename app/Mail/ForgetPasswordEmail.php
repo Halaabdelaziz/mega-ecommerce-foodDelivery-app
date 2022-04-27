@@ -17,7 +17,7 @@ class ForgetPasswordEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct( $token)
     {
         $this->token = $token;
     }

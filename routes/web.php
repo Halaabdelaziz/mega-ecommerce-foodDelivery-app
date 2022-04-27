@@ -24,8 +24,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 // Route::get('lang/home', [LangController::class,'index']);
 Route::get('lang/change', [LangController::class,'change'])->name('changeLang');
-Route::get('/resetPassword',[ForgetPasswordController::class,'changePasswordPage']);
-Route::post('/resetPassword/{token}',[ForgetPasswordController::class,'resetPassword']);
+Route::get('/resetPasswordpage/{token}',[ForgetPasswordController::class,'changePasswordPage']);
+Route::post('/resetPassword',[ForgetPasswordController::class,'resetPassword']);
 
 Route::group(['middleware' =>['auth', 'verified']],function (){
     Route::get('/layout', function () {

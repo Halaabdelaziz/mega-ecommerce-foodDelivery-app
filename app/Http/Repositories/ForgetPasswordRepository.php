@@ -39,8 +39,8 @@ class ForgetPasswordRepository implements ForgetPasswordInterface{
         return $this->apiResponce(200,'check your email to verify changing your password') ;  
     }
 
-    public function changePasswordPage(){
-        return view('newpassword');
+    public function changePasswordPage($token){
+        return view('newpassword',compact('token'));
     }
 
     // reset password
