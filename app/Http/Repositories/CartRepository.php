@@ -14,28 +14,28 @@ class CartRepository implements CartInterface{
     use ApiResponceTrait;
 
     public function addToCart($request){
-      
     
-      $cart= Cart::where([['product_id',$request->product_id],['user_id',Auth::user()->id]])->first();
-      if($cart){
-          $cart->update([
-          'count'=> $cart->count + $request->count
-      ]);
-      }else{
-        $cart=  Cart::create([
+    
+        $cart= Cart::where([['product_id',$request->product_id],['user_id',Auth::user()->id]])->first();
+        if($cart){
+            $cart->update([
+            'count'=> $cart->count + $request->count
+        ]);
+        }else{
+        $cart = Cart::create([
             'user_id'=> Auth::user()->id,
             'product_id'=>$request->product_id,
             'restaurant_id'=>$request->restaurant_id,
             'count'=> $request->count 
         ]);
-      }
+        } 
     
-      return $this->apiResponce(200,'added to cart');
+        return $this->apiResponce(200,'added to cart',$cart);
 
 
     }
     public function update ($request){
-      
+    
         
         $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$request->product_id]])->first();
         if($cart){
@@ -48,7 +48,7 @@ class CartRepository implements CartInterface{
 
     }
     public function delete ($request){
-       
+        
         $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$request->product_id]])->first();
             if(is_null($cart)){
                 return $this->apiResponce(400,' cart not found');

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\admin;
 
+use App\Http\Resources\productResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class orderResource extends JsonResource
+class AllOrdersResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +19,7 @@ class orderResource extends JsonResource
             'id'=>$this->id,
             'address'=>$this->address,
             'phone'=>$this->phone,
-            'product'=>$this->products,
+            'product'=>new productResource($this->products),
             'count'=>$this->count,
             'unit_price'=>$this->unit_price,
             'net_price'=>$this->net_price,

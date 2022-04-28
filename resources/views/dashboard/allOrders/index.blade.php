@@ -13,53 +13,42 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Products</h1>
+                    <h1 class="h3 mb-2 text-gray-800">{{__('messages.All_Orders')}}</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Products Data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">{{__('messages.All_Orders_Data')}}</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-
-                                    
                                             <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Price</th>
                                             <th>Quantity</th>
-                                            <th>Category</th>
-                                            <th>Restaurant</th>
+                                            <th>unit-Price</th>
+                                            <th>net-price</th>
+                                            <th>address</th>
+                                            <th>phone</th>
+                                            <th>status</th>
                                             <th>Created at</th>
                                             <th>Update at</th>
                                             <th>Modify</th>
-                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Products as $Product)
+                                        @foreach($orders as $order)
                                         <tr>
-                                            <td><img src='{{asset("public/img/$Product->image")}}' class="img-fluid"></td>
-                                            <td>{{$Product->name}}</td>
-                                            <td>{{$Product->description}}</td>
-                                            <td>{{$Product->price}}</td>
-                                            <td>{{$Product->stock}}</td>
-                                            <td>{{$Product->category->name}}</td>
-                                            @foreach($Product->restarunt as $restuarant)
-                                                <td>{{$restuarant->name}}</td>
-                                            @endforeach
-                                            <td>{{$Product->created_at}}</td>
-                                            <td>{{$Product->updated_at}}</td>
-                                            <td><a class="btn btn-primary" href="{{route('editProduct',[$Product->id])}}">Edit</a></td>
-                                            <td>
-                                                <form method="post" action="/product/{{$Product->id}}">
-                                                    @method("delete")
-                                                    @csrf
-                                                    <input type="submit" name="delete" class="btn btn-danger" value="Delete">
-                                                </form>
-                                            </td>
+                                            <td>{{$order->products->name}}</td>
+                                            <td>{{$order->count}}</td>
+                                            <td>{{$order->unit_price}}</td>
+                                            <td>{{$order->net_price}}</td>
+                                            <td>{{$order->address}}</td>
+                                            <td>{{$order->phone}}</td>
+                                            <td>{{$order->status}}</td>
+                                            <td>{{$order->created_at}}</td>
+                                            <td>{{$order->updated_at}}</td>
+                                            <td><a class="btn btn-primary" href="{{route('editOrder',[$order->id])}}">Edit</a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
