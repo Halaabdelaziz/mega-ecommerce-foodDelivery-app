@@ -70,7 +70,7 @@ class OrderRepository implements OrderInterface
     public function orderDetails(){
 
         $order=Order::Where('user_id',Auth::user()->id)->get()->last();
-        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee',
+        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee,created_at',
         'products:id,name')->where('order_id',$order->id)->get());
         $data= $order_items;
         return $this->apiResponce(200,'Order was created',null,$data);
