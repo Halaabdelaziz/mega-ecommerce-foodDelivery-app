@@ -61,7 +61,7 @@ class CartRepository implements CartInterface{
 
     public function userCart(){
 
-        $cart= cartResource::collection(Cart::with('restaurants:id,name,adress','products:id,name,price,image,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get());
+        $cart= cartResource::collection(Cart::with('restaurants:id,name,address','products:id,name,price,image,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get());
         return $this->apiResponce(200,'user cart ',null,$cart);
     }
     

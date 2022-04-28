@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\AllOrderController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\admin\RestaurantController;
@@ -61,8 +62,7 @@ Route::group(['middleware' =>['auth', 'verified']],function (){
         Route::patch('/{id}/edit',[ProductController::class,'update']);
         Route::delete('/{id}',[ProductController::class,'destroy']);
     });
-
-
+    Route::get('/index',[AllOrderController::class,'index'])->name('getOrders');
 });
 Route::get('/logout',[AuthenticatedSessionController::class,'destroy']);
 

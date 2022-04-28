@@ -47,6 +47,9 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Http\Interfaces\ForgetPasswordInterface',
             'App\Http\Repositories\ForgetPasswordRepository'
         );
+        $this->app->bind(
+            'App\Http\Interfaces\admin\AllOrdersInterface','App\Http\Repositories\admin\AllOrderRepository'
+        );
     }
 
     /**

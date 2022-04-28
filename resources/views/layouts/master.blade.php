@@ -105,6 +105,20 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
+                    aria-expanded="true" aria-controls="collapseOrders">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>{{__('messages.AllOrders')}}</span>
+                </a>
+                <div id="collapseOrders" class="collapse" aria-labelledby="headingProducts"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">All Orders:</h6>
+                        <a class="collapse-item" href="{{route('getOrders')}}">List of Orders</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
