@@ -41,7 +41,6 @@ class ProductRequest extends FormRequest
             'name.required' => 'Name is required!',
             'name.string' => 'name is must be string',
             'description.required'=>'A description is required!',
-            'description.max'=>'description max character is 255',
             'price.required'=>'price is required',
             'stock.required'=>'stock is required',
             'stock.string'=>'description is must be string',

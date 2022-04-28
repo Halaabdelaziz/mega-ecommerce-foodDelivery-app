@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Mail\ForgetPasswordEmail;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-
-use App\Http\Controllers\Auth\AuthController;
 
 class AuthController extends Controller
 {

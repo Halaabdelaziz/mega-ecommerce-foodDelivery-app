@@ -22,8 +22,6 @@ class RestaruntRepository implements RestaruntInterface{
         return $this->apiResponce(200,'All Restarunts',null,$Restarunts);
             
     }
-
-
     public function restaruntDetails($id){
          
          $Restarunts =   new restaruntResource($this->restaurantModel::with('products')->firstWhere('id',$id));

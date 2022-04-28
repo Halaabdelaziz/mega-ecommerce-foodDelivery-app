@@ -12,7 +12,9 @@ use App\Http\Resources\orderResource;
 use App\Http\Traits\ApiResponceTrait;
 use App\Http\Interfaces\OrderInterface;
 use App\Rules\Cart\OrderStockValidation;
+use App\Http\Resources\userorderResource;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\userordersResource;
 
 class OrderRepository implements OrderInterface
 {
@@ -68,20 +70,27 @@ class OrderRepository implements OrderInterface
     public function orderDetails(){
 
         $order=Order::Where('user_id',Auth::user()->id)->get()->last();
-        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$order->id)->get());
+        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee',
+        'products:id,name')->where('order_id',$order->id)->get());
         $data= $order_items;
         return $this->apiResponce(200,'Order was created',null,$data);
     }
 
     public function userOrder($id){
-        $order_items=orderResource::collection(Orderitem::with('order:id,totalprice,delivery_fee','products:id,name')->where('order_id',$id)->get());
+           
+        $order_items=userorderResource::collection(Orderitem::with('order:id,created_at,delivery_fee,totalprice','products:id,name,image,price','products.restarunt:id,name,image,address')
+        ->where('order_id',$id)->get());
         return $this->apiResponce(200,'Order details',null,$order_items);
     }
+  
+    
+    public function userOrders(){ 
+        $query=  userordersResource::collection(Orderitem::with('order:id,created_at','products:id','products.restarunt:id,name,image')->whereHas('order',function($query){
+            $query->where('user_id',Auth()->user()->id);})->get());
 
-    public function userOrders(){
-      $query=orderResource::collection(Orderitem::whereHas('order',function($query){
-        $query->where('user_id',Auth()->user()->id);})->get()
-      );
+    //   $query=userorderResource::collection(Orderitem::whereHas('order',function($query){
+    //     $query->where('user_id',Auth()->user()->id);})->get())
+    //   ;
         return $this->apiResponce(200,'User orders',null,$query);
      
        }

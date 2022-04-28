@@ -22,7 +22,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
-// Route::get('lang/home', [LangController::class,'index']);
 Route::get('lang/change', [LangController::class,'change'])->name('changeLang');
 Route::get('/resetPasswordpage/{token}',[ForgetPasswordController::class,'changePasswordPage']);
 Route::post('/resetPassword',[ForgetPasswordController::class,'resetPassword']);
@@ -81,4 +80,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-require __DIR__.'/../vendor/autoload.php';
+;
