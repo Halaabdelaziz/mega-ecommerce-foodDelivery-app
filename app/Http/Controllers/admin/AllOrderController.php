@@ -1,18 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\admin\CategoryRequest;
-use App\Http\Interfaces\admin\CategoriesInterface;
+use App\Http\Interfaces\admin\AllOrdersInterface;
 
-class CategoryController extends Controller
+class AllOrderController extends Controller
 {
-    protected $_CategoriesInterface;
+    protected $_OrdersInterface;
 
-    
-    public function __construct(CategoriesInterface $CategoriesInterface){
-        $this->_CategoriesInterface=$CategoriesInterface;
+    public function __construct(AllOrdersInterface $AllOrdersInterface){
+        $this->_OrdersInterface=$AllOrdersInterface;
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return $this->_CategoriesInterface->index();
+        return $this->_OrdersInterface->index();
     }
 
     /**
@@ -33,7 +32,6 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return $this->_CategoriesInterface->create();
     }
 
     /**
@@ -42,10 +40,20 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
         //
-        return $this->_CategoriesInterface->store($request);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -57,7 +65,6 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-        return $this->_CategoriesInterface->edit($id);
     }
 
     /**
@@ -67,10 +74,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
-        return $this->_CategoriesInterface->update($request, $id);
     }
 
     /**
@@ -82,6 +88,5 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-        return $this->_CategoriesInterface->destroy($id);
     }
 }
