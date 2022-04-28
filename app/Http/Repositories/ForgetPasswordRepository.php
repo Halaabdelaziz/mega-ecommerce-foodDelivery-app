@@ -40,6 +40,7 @@ class ForgetPasswordRepository implements ForgetPasswordInterface{
     }
 
     public function changePasswordPage($token){
+        
         return view('newpassword',compact('token'));
     }
 

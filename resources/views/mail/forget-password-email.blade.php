@@ -3,7 +3,7 @@
 
 change your password 
 
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/resetPasswordpage/token='.$token])
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/resetPasswordpage/'.$token])
 Reset Password
 @endcomponent
 
