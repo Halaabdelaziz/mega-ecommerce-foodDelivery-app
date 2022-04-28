@@ -16,15 +16,14 @@ class orderResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-             'adsress'=>$this->address,
-             'phone'=>$this->phone,
-             'product'=>$this->products,
-             'count'=>$this->count,
-             'unit_price'=>$this->unit_price,
-             'net_price'=>$this->net_price,
-             'order'=>$this->order,
-             'status'=>$this->status
-           
+            'adsress'=>$this->address,
+            'phone'=>$this->phone,
+            'product'=>$this->products,
+            'count'=>$this->count,
+            'unit_price'=>$this->unit_price,
+            'net_price'=>$this->net_price,
+            'order'=>$this->order,
+            'status'=>$this->status
         ];
     }
 }

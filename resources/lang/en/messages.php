@@ -4,7 +4,8 @@ return [
     'title' => 'Dashboard',
     'restaurants'=>'Restaurants',
     'categories'=>'Categories',
-    'products'=>'Products'
+    'products'=>'Products',
+    'AllOrders'=>'AllOrders'
 
 ]
 

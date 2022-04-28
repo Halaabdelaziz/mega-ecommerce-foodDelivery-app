@@ -4,7 +4,8 @@ return [
     'title' => 'لوحة التحكم',
     'restaurants'=>'مطاعم',
     'categories'=>'فئة',
-    'products'=>'منتجات'
+    'products'=>'منتجات',
+    'AllOrders'=>'كل الطلبات'
 
 
 ]
