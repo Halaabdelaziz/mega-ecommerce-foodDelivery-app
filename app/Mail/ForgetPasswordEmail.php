@@ -30,6 +30,6 @@ class ForgetPasswordEmail extends Mailable
     public function build()
     {
         
-        return $this->markdown('mail.forget-password-email')->with(['token'=>$this->token]);
+        return $this->markdown('mail.forget-password-email')->with($this->token);
     }
 }

@@ -53,6 +53,6 @@ class StockValidationRules implements Rule
      */
     public function message()
     {
-        return 'Stock not found';
+        return  'Stock not found';
     }
 }
