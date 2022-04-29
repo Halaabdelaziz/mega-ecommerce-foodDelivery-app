@@ -9,8 +9,9 @@ return [
     'All_Orders_Data'=>'جميع بيانات الطلبات',
     'All_Orders'=>'جميع الطلبات',
     'searchFor'=>'ابحث عن...',
-    'Order_Status'=>'حالة الطلب'
-
+    'Order_Status'=>'حالة الطلب',
+    'Restaurant'=>'مطعم',
+    'Select_Language'=>'أختار اللغة'
 
 ]
 

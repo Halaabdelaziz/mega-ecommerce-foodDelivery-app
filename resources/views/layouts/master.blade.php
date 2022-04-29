@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Restaurant</div>
+                <div class="sidebar-brand-text mx-3">{{__('messages.Restaurant')}}</div>
             </a>
 
             <!-- Divider -->
@@ -189,7 +189,7 @@
                         <!-- Nav Item - User Information -->
                         <div class="row">
                             <div class="col-md-2 col-md-offset-6 text-right mx-5">
-                                <strong>Select Language</strong>
+                                <strong>{{__('messages.Select_Language')}}</strong>
                             </div>
                             <div class="col-md-4 my-3">
                                 <select class="form-control changeLang">
