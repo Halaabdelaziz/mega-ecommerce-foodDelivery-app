@@ -24,14 +24,12 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
             'name'=>'required|string|max:50',
             'description'=>'required',
             'price'=>'required',
-            'category_id'=>'required',
-            'restaurant _id'=>'required',
             'stock'=>'required',
-            'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image'=>'required|image|mimes:jpg,png,jpeg,gif,svg',
         ];
     }
     public function messages()

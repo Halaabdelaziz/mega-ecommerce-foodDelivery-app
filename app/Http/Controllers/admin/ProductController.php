@@ -57,7 +57,7 @@ class ProductController extends Controller
     public function show($id)
     {
         //
-        return $this->_ProductInterface->show();
+        return $this->_ProductInterface->show($id);
     }
 
     /**

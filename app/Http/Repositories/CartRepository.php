@@ -9,9 +9,11 @@ use App\Http\Traits\ApiResponceTrait;
 use App\Http\Interfaces\CartInterface;
 
 
-class CartRepository implements CartInterface{
+class CartRepository implements CartInterface
+{
 
     use ApiResponceTrait;
+
 
     public function addToCart($request){
     
@@ -34,21 +36,21 @@ class CartRepository implements CartInterface{
 
 
     }
-    public function update ($request){
-    
-        
-        $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$request->product_id]])->first();
-        if($cart){
-            $cart->update([
-                'count'=>$request->count
-            ]);
-            return $this->apiResponce(200,'cart updated',$cart);
-        }
-        return $this->apiResponce(400,'cart not found');
 
+    public function update($request)
+    {
+
+        $cart = Cart::where([['user_id', Auth::user()->id], ['product_id', $request->product_id]])->first();
+        if ($cart) {
+            $cart->update([
+                'count' => $request->count
+            ]);
+            return $this->apiResponce(200, 'cart updated', $cart);
+        }
+        return $this->apiResponce(400, 'cart not found');
     }
+
     public function delete ($request){
-        
         $cart = Cart::where([['user_id',Auth::user()->id],['product_id',$request->product_id]])->first();
             if(is_null($cart)){
                 return $this->apiResponce(400,' cart not found');
@@ -60,6 +62,7 @@ class CartRepository implements CartInterface{
     public function userCart(){
         $cart = cartResource::collection(Cart::with('restaurants:id,name,address','products:id,name,price,image,description')->where('user_id',Auth::user()->id)->select('product_id','count','restaurant_id')->get());
         return $this->apiResponce(200,'user cart ',null,$cart);
+
     }
-    
+
 }
