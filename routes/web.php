@@ -61,7 +61,12 @@ Route::group(['middleware' =>['auth', 'verified']],function (){
         Route::patch('/{id}/edit',[ProductController::class,'update']);
         Route::delete('/{id}',[ProductController::class,'destroy']);
     });
-    Route::get('/index',[AllOrderController::class,'index'])->name('getOrders');
+    
+    // all Orders Route
+        Route::get('/index',[AllOrderController::class,'index'])->name('getOrders');
+        Route::get('/{id}/edit',[AllOrderController::class,'edit'])->name('editOrder');
+        Route::patch('/{id}/edit',[AllOrderController::class,'update']);
+    
 });
 Route::get('/logout',[AuthenticatedSessionController::class,'destroy']);
 

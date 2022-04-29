@@ -5,7 +5,12 @@ return [
     'restaurants'=>'Restaurants',
     'categories'=>'Categories',
     'products'=>'Products',
-    'AllOrders'=>'AllOrders'
+    'AllOrders'=>'AllOrders',
+    'All_Orders_Data'=>'All Orders Data',
+    'All_Orders'=>'All Orders',
+    'searchFor'=>'search for...',
+    'Order_Status'=>'Order Status'
+
 
 ]
 
