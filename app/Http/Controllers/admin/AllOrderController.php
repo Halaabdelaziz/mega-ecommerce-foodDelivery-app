@@ -65,6 +65,7 @@ class AllOrderController extends Controller
     public function edit($id)
     {
         //
+        return $this->_OrdersInterface->edit($id);
     }
 
     /**
@@ -77,6 +78,7 @@ class AllOrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return $this->_OrdersInterface->update($request, $id);
     }
 
     /**
